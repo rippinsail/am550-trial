@@ -98,7 +98,7 @@ namespace esphome {
             */
 
             // Decrypt old
-            uint8_t msglen = datalen - 33;
+            uint8_t msglen = datalen - 33; // 33 -> 35
             uint8_t message[msglen] = {0};
             memcpy(message, msg.data() + 28, msglen);   // 30 -> 28
             uint8_t nonce[16] = {0};
