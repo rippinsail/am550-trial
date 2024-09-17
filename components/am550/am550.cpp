@@ -71,7 +71,7 @@ namespace esphome {
             // Print the actual content starting at msg[16]
             char actual_content[6] = {0};  // Buffer for the 5 bytes + null terminator
             memcpy(actual_content, &msg[14], 5);
-            ESP_LOGW(TAG, "Actual content at msg[16]: %s", actual_content);
+            ESP_LOGW(TAG, "Actual content, at msg[16]: %s", actual_content);
 
             if(memcmp(&msg[14], "ISKhu", 5)!=0){
                 ESP_LOGW(TAG, "Unknown smartmeter model, support is untested.");
