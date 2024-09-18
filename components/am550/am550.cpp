@@ -102,9 +102,9 @@ namespace esphome {
             uint8_t message[msglen] = {0};
             memcpy(message, msg.data() + 28, msglen);   // 30 -> 28
             uint8_t nonce[16] = {0};
-            memcpy(nonce, msg.data() + 16, 8);
-            memcpy(nonce + 8, msg.data() + 26, 4);
-            nonce[15] = 0x02;
+            memcpy(nonce, msg.data() + 14, 9);  // original: memcpy(nonce, msg.data() + 16, 8);
+            memcpy(nonce + 9, msg.data() + 24, 5);  // original: memcpy(nonce + 8, msg.data() + 26, 4);
+            nonce[15] = 0x02;   // original: nonce[15] = 0x02;
             this->ctraes128.setKey(this->key, 16);
             this->ctraes128.setIV(nonce, 16);
             ESP_LOGV(TAG, "encrypted data: %s", format_hex_pretty(std::vector<uint8_t>(message, message+msglen)).c_str());            
