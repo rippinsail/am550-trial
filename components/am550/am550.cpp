@@ -20,10 +20,12 @@ namespace esphome {
             if(!this->receiveBuffer.empty() && currentTime - this->lastRead > this->readTimeout){
                 std::vector<uint8_t> handleBytes = this->receiveBuffer;
 
-                // use static string for debugging:
+                // uncomment below section to use static string for debugging:
+                /*
                 std::string hexInput = "7EA067CF022313FBF1E6E700DB0849534B687536864B4F20027E187993D225CDA195A03AFAC7567FE724D8CD4C7DC9180B679B1BAD7AF68520C68932CAC7817A6A5CB3FAFCC0CF07631F657A9105F35626C197A6CEAD17C6967866EC1434044D66EF056BE33DF1727E";  // Replace with actual hex string
                 std::vector<uint8_t> staticBytes = hexToBytes(hexInput);
                 handleBytes = staticBytes;
+                */
 
 
                 ESP_LOGV(TAG, "raw recieved data: %s", format_hex_pretty(handleBytes).c_str());
